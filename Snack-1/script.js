@@ -1,16 +1,14 @@
 
 /** EX- IL COMPLEANNO DELLO CHEF  */
 
-async function fetchJson(url) {
-    const response = await fetch (url);
-    const obj = await response.json();
-    return obj; 
-}
+
 
 async function getChefBirthday(id) {
 
-const ricetta = await fetchJson(`https://dummyjson.com/recipes/${id}`);
-const chef = await fetchJson(`https://dummyjson.com/users/${ricetta.userId}`);
+const ricettaResponse = await fetch(`https://dummyjson.com/recipes/${id}`);
+const ricetta = await ricettaResponse.json(); 
+const chefResponse = await fetch(`https://dummyjson.com/users/${ricetta.userId}`);
+const  chef = await chefResponse.json(); 
 return chef.birthDate; 
 
 }
